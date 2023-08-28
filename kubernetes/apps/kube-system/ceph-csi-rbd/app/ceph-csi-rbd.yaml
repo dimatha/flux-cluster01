@@ -1,0 +1,74 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ceph-csi-rbd
+  namespace: ceph-csi-rbd
+spec:
+  interval: 30m
+  chart:
+    spec:
+      # renovate: registryUrl=https://ceph.github.io/csi-charts
+      chart: ceph-csi-rbd
+      version: 3.9.0
+      sourceRef:
+        kind: HelmRepository
+        name: ceph-csi
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  #See https://github.com/ceph/ceph-csi/blob/devel/charts/ceph-csi-cephfs/values.yaml
+  values:
+    # Configuration for the CSI to connect to the cluster
+    # Ref: https://github.com/ceph/ceph-csi/blob/devel/examples/README.md
+    # Example:
+    csiConfig:
+      - clusterID: "003fff1d-487a-40b8-9b58-49b078089a36"
+        monitors:
+          - 192.168.192.201:6789
+          - 192.168.192.202:6789
+          - 192.168.192.203:6789
+
+    storageClass:
+      # Specifies whether the storageclass should be created
+      create: true
+      name: csi-rbd-sc
+
+      # Annotations for the storage class
+      # Example:
+      annotations:
+        storageclass.kubernetes.io/is-default-class: "true"
+      # annotations: {}
+
+      # (required) String representing a Ceph cluster to provision storage from.
+      # Should be unique across all Ceph clusters in use for provisioning,
+      # cannot be greater than 36 bytes in length, and should remain immutable for
+      # the lifetime of the StorageClass in use.
+      clusterID: 003fff1d-487a-40b8-9b58-49b078089a36
+
+      # (optional) If you want to use erasure coded pool with RBD, you need to
+      # create two pools. one erasure coded and one replicated.
+      # You need to specify the replicated pool here in the `pool` parameter, it is
+      # used for the metadata of the images.
+      # The erasure coded pool must be set as the `dataPool` parameter below.
+      # dataPool: <ec-data-pool>
+      # dataPool: ec-kubernetes
+
+      # (required) Ceph pool into which the RBD image shall be created
+      # eg: pool: replicapool
+      pool: kubernetes
+
+      # (optional) RBD image features, CSI creates image with image-format 2 CSI
+      # RBD currently supports `layering`, `journaling`, `exclusive-lock`,
+      # `object-map`, `fast-diff`, `deep-flatten` features.
+      # Refer https://docs.ceph.com/en/latest/rbd/rbd-config-ref/#image-features
+      # for image feature dependencies.
+      # imageFeatures: layering,journaling,exclusive-lock,object-map,fast-diff
+      imageFeatures: "layering"
