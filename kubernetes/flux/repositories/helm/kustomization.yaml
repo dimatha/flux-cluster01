@@ -7,7 +7,6 @@ resources:
   - ./cilium.yaml
   - ./coredns.yaml
   - ./csi-driver-nfs.yaml
-  - ./ceph-csi.yaml
   - ./external-dns.yaml
   - ./grafana.yaml
   - ./hajimari.yaml
