@@ -27,6 +27,7 @@ spec:
   uninstall:
     keepHistory: false
     disableWait: true
+    deletionPropagation: orphan
   values:
     controller:
       strategy: RollingUpdate
