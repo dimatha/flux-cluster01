@@ -1,0 +1,79 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: paperless
+  namespace: tools
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: app-template
+      version: 1.5.1
+      interval: 30m
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+
+  values:
+    controller:
+      type: statefulset
+      annotations:
+        reloader.stakater.com/auto: "true"
+
+    image:
+      repository: ghcr.io/bjw-s/paperless-ngx
+      tag: 1.17.2@sha256:7e2faec32e0d4ade4618d0f1d284c3798f04bd35cdafe760da763e390d1ef6ae
+
+    envFrom:
+      - secretRef:
+          name: paperless-secret
+      - configMapRef:
+          name: paperless-configmap
+
+    service:
+      main:
+        ports:
+          http:
+            port: 8000
+
+    ingress:
+      main:
+        enabled: true
+        ingressClassName: "nginx"
+        hosts:
+          - host: &host "{{ .Release.Name }}.${SECRET_PUBLIC_DOMAIN}"
+            paths:
+              - path: /
+        tls:
+          - hosts:
+              - *host
+
+    persistence:
+      nas-consume:
+        enabled: true
+        mountPath: /data/nas/consume
+        type: nfs
+        server: "skinny.int.sakun.in"
+        path: /volume1/docs/paperless/incoming
+      nas-export:
+        enabled: true
+        mountPath: /data/nas/export
+        type: nfs
+        server: "skinny.int.sakun.in"
+        path: /volume1/docs/paperless/export
+
+    resources:
+      requests:
+        cpu: 11m
+        memory: 1812M
+      limits:
+        memory: 1812M
+
+    volumeClaimTemplates:
+      - name: data
+        mountPath: /data/local
+        accessMode: ReadWriteOnce
+        size: 15Gi
+        storageClass: csi-rbd-sc
