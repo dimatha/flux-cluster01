@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: selfhosted
 resources:
   - ./configmap.yaml
+  - ./secret.sops.yaml
   # - ./externalsecret.yaml
   - ./helmrelease.yaml
   # - ./volsync.yaml
