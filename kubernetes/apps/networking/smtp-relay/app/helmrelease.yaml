@@ -21,13 +21,12 @@ spec:
     remediation:
       retries: 3
   upgrade:
-    cleanupOnFail: true
+    # cleanupOnFail: true
     remediation:
+      remediateLastFailure: false
       retries: 3
   uninstall:
     keepHistory: false
-    disableWait: true
-    deletionPropagation: orphan
   values:
     controller:
       strategy: RollingUpdate
