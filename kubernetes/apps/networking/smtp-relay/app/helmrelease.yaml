@@ -48,10 +48,12 @@ spec:
         externalTrafficPolicy: Local
         ports:
           http:
-            port: 587
+            port: 2525
           metrics:
             enabled: true
             port: 9749
+      annotations:
+        "io.cilium/lb-ipam-ips": "172.16.172.25"
     serviceMonitor:
       main:
         enabled: true
