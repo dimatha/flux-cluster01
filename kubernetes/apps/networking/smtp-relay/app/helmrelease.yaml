@@ -53,8 +53,8 @@ spec:
           metrics:
             enabled: true
             port: 9749
-      annotations:
-        "io.cilium/lb-ipam-ip": "172.16.172.25"
+      # annotations:
+      #   "io.cilium/lb-ipam-ip": "172.16.172.25"
     serviceMonitor:
       main:
         enabled: true
