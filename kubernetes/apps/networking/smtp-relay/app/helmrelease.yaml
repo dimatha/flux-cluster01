@@ -27,8 +27,6 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    annotations:
-      "io.cilium/lb-ipam-ips": "172.16.172.25"
     controller:
       strategy: RollingUpdate
       annotations:
@@ -45,6 +43,8 @@ spec:
       - secretRef:
           name: smtp-relay-secret
     service:
+      annotations:
+        "io.cilium/lb-ipam-ips": "172.16.172.25"
       main:
         type: LoadBalancer
         externalTrafficPolicy: Local
