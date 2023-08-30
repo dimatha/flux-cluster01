@@ -44,8 +44,9 @@ spec:
           name: smtp-relay-secret
     service:
       main:
-        annotations:
-          io.cilium/lb-ipam-ips: "172.16.172.25"
+        # annotations:
+        #   io.cilium/lb-ipam-ips: "172.16.172.25"
+        loadBalancerIP: "172.16.172.25"
         type: LoadBalancer
         externalTrafficPolicy: Local
         ports:
