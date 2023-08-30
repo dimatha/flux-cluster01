@@ -49,8 +49,8 @@ spec:
         externalTrafficPolicy: Local
         ports:
           http:
-            port: 25
-            targetPort: 2525
+            port: 2525
+            targetPort: 25
           metrics:
             enabled: true
             port: 9749
