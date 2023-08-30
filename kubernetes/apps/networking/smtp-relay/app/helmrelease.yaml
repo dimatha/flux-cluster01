@@ -28,6 +28,8 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    annotations:
+      "io.cilium/lb-ipam-ips": "172.16.172.25"
     controller:
       strategy: RollingUpdate
       annotations:
@@ -53,8 +55,6 @@ spec:
           metrics:
             enabled: true
             port: 9749
-      # annotations:
-      #   "io.cilium/lb-ipam-ip": "172.16.172.25"
     serviceMonitor:
       main:
         enabled: true
