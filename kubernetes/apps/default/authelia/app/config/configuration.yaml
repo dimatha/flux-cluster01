@@ -49,3 +49,4 @@ identity_providers:
         redirect_uris:
           ["https://grafana.${SECRET_DOMAIN}/login/generic_oauth"]
         userinfo_signing_algorithm: none
+
