@@ -24,8 +24,8 @@ access_control:
     # bypass Authelia WAN + LAN
     - domain:
         - auth.${SECRET_DOMAIN}
-      # policy: bypass
-      policy: one_factor
+      policy: bypass
+      # policy: one_factor
     # One factor auth for LAN
     - domain:
         - "*.${SECRET_DOMAIN}"
