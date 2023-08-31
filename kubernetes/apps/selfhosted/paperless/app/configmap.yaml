@@ -36,6 +36,9 @@ data:
   PAPERLESS_OCR_LANGUAGES: eng deu
   PAPERLESS_OCR_LANGUAGE: eng
 
+  # Document Consumption
+  PAPERLESS_CONSUMER_DELETE_DUPLICATES: "true"
+
   # Configure redis integration
   PAPERLESS_REDIS: redis://paperless-redis.selfhosted.svc.cluster.local:6379
 
