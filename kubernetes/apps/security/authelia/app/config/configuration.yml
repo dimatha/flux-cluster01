@@ -45,3 +45,16 @@ identity_providers:
         redirect_uris:
           ["https://grafana.${SECRET_DOMAIN}/login/generic_oauth"]
         userinfo_signing_algorithm: none
+      - id: proxmox
+        description: Proxmox
+        secret: "${SECRET_PROXMOX_OAUTH_CLIENT_SECRET}"
+        public: false
+        authorization_policy: one_factor
+        pre_configured_consent_duration: 1w
+        redirect_uris:
+          - https://pvec01.int.sakun.in
+        scopes:
+          - openid
+          - profile
+          - email
+        userinfo_signing_algorithm: none
