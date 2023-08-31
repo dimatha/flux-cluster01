@@ -14,25 +14,19 @@ session:
 access_control:
   ## Default policy can either be 'bypass', 'one_factor', 'two_factor' or 'deny'. It is the policy applied to any
   ## resource if there is no policy to be applied to the user.
-  default_policy: two_factor
-  networks:
-    - name: private
-      networks: ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]
-    - name: vpn
-      networks: ["10.10.0.0/16"]
-  rules:
-    # # bypass Authelia WAN + LAN
-    # - domain:
-    #     - auth.${SECRET_DOMAIN}
-    #   policy: bypass
-      # policy: one_factor
-    # One factor auth for LAN
-    - domain:
-        - "*.${SECRET_DOMAIN}"
-      policy: one_factor
-      # subject: ["group:homelab_admins", "group:homelab_users"]
-      # networks:
-      #   - private
+  default_policy: one_factor
+  # networks:
+  #   - name: private
+  #     networks: ["10.0.0.0/8", "172.16.0.0/12", "192.168.0.0/16"]
+  #   - name: vpn
+  #     networks: ["10.10.0.0/16"]
+  # rules:
+  #   - domain:
+  #       - "*.${SECRET_DOMAIN}"
+  #     policy: one_factor
+  #     # subject: ["group:homelab_admins", "group:homelab_users"]
+  #     # networks:
+  #     #   - private
 
 identity_providers:
   oidc:
