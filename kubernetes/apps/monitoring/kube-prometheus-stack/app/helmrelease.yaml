@@ -27,8 +27,6 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
-  dependsOn:
-      namespace: kube-system
   values:
     crds:
       enabled: true
