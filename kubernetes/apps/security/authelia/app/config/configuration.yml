@@ -31,8 +31,8 @@ access_control:
         - "*.${SECRET_DOMAIN}"
       policy: one_factor
       # subject: ["group:homelab_admins", "group:homelab_users"]
-      networks:
-        - private
+      # networks:
+      #   - private
 
 identity_providers:
   oidc:
