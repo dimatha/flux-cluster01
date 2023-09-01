@@ -11,6 +11,22 @@ session:
         - host: redis-node-2.redis-headless.database.svc.cluster.local
           port: 26379
 
+##
+## Regulation Configuration
+##
+## This mechanism prevents attackers from brute forcing the first factor. It bans the user if too many attempts are made
+## in a short period of time.
+regulation:
+  ## The number of failed login attempts before user is banned. Set it to 0 to disable regulation.
+  max_retries: 3
+
+  ## The time range during which the user can attempt login before being banned in the duration common syntax. The user
+  ## is banned if the authentication failed 'max_retries' times in a 'find_time' seconds window.
+  find_time: '2m'
+
+  ## The length of time before a banned user can login again in the duration common syntax.
+  ban_time: '5m'
+
 access_control:
   ## Default policy can either be 'bypass', 'one_factor', 'two_factor' or 'deny'. It is the policy applied to any
   ## resource if there is no policy to be applied to the user.
