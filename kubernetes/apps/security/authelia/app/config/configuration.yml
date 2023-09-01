@@ -88,3 +88,16 @@ identity_providers:
           - groups
           - email
         userinfo_signing_algorithm: none
+      - id: pgadmin
+        description: PgAdmin
+        secret: "${SECRET_PGADMIN_OAUTH_CLIENT_SECRET}"
+        public: false
+        authorization_policy: one_factor
+        pre_configured_consent_duration: 1w
+        redirect_uris:
+          - https://pgadmin.sakun.in/oauth2/authorize
+        scopes:
+          - openid
+          - profile
+          - email
+        userinfo_signing_algorithm: none
