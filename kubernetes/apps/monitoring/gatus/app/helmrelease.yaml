@@ -122,3 +122,9 @@ spec:
           - { name: METHOD, value: WATCH }
         volumeMounts:
           - { name: config, mountPath: /config }
+    volumeClaimTemplates:
+      - name: data
+        mountPath: /data
+        accessMode: ReadWriteOnce
+        size: 5Gi
+        storageClass: csi-rbd-sc

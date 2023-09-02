@@ -1,10 +1,10 @@
 ---
 web:
   port: ${CUSTOM_WEB_PORT}
-storage:
-  type: postgres
-  path: postgres://${INIT_POSTGRES_USER}:${INIT_POSTGRES_PASS}@${INIT_POSTGRES_HOST}:5432/${INIT_POSTGRES_DBNAME}?sslmode=require
-  caching: true
+# storage:
+#   type: postgres
+#   path: postgres://${INIT_POSTGRES_USER}:${INIT_POSTGRES_PASS}@${INIT_POSTGRES_HOST}:5432/${INIT_POSTGRES_DBNAME}?sslmode=require
+#   caching: true
 metrics: true
 debug: false
 ui:
@@ -21,7 +21,7 @@ alerting:
       success-threshold: 2
 connectivity:
   checker:
-    target: 1.1.1.1:80
+    target: 172.16.172.1:53
     interval: 1m
 maintenance:
   start: 23:00
