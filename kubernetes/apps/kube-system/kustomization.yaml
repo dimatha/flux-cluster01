@@ -9,3 +9,4 @@ resources:
   - ./metrics-server/ks.yaml
   - ./reloader/ks.yaml
   - ./ceph-csi-rbd/ks.yaml
+  - ./tetragon/ks.yaml
