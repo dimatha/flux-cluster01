@@ -44,6 +44,10 @@ access_control:
       subject: ["group:homelab_admins", "group:homelab_users"]
       networks:
         - private
+    - domain:
+        - "*.${SECRET_DOMAIN}"
+      policy: two_factor
+      subject: ["group:homelab_admins", "group:homelab_users"]
 
 identity_providers:
   oidc:
