@@ -7,3 +7,5 @@ resources:
   # Flux-Kustomizations
   - ./authelia/ks.yaml
   - ./crowdsec/ks.yaml
+  - ./falco/ks.yaml
+  - ./falco-exporter/ks.yaml
