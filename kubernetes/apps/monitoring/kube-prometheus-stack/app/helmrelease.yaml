@@ -191,10 +191,10 @@ spec:
           repeat_interval: 12h
           receiver: pushover
           routes:
-            - receiver: "null" # quote
+            - receiver: "null"
               matchers:
-                - alertname =~ "InfoInhibitor"
-            - receiver: pushover
+                - alertname =~ "InfoInhibitor|Watchdog"
+            - receiver: "pushover"
               matchers:
                 - severity = "critical"
               continue: true
