@@ -30,7 +30,14 @@ maintenance:
   every:
     - Monday
     - Thursday
-# endpoints:
+endpoints:
+  - name: Ping CloudFlare
+    url: "icmp://1.1.1.1"
+    interval: 10s
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
 #   - name: status
 #     group: external
 #     url: https://status.${SECRET_DOMAIN}
