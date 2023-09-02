@@ -70,12 +70,24 @@ spec:
             - ReadWriteOnce
           # storageClassName: "cstor-replica-raspberry-pi-pool"
           size: 100Mi
+      env:
+        - name: ENROLL_KEY
+          value: "${SECRET_CROWDSEC_ENROLL_KEY}"
+        - name: ENROLL_INSTANCE_NAME
+          value: "k8s"
+        - name: ENROLL_TAGS
+          value: "k8s linux test"
     agent:
       acquisition:
         - namespace: networking
           podName: nginx-*
           program: nginx
+      env:
+        - name: COLLECTIONS
+          value: "crowdsecurity/nginx"
       metrics:
         enabled: true
         serviceMonitor:
           enabled: true
+
+
