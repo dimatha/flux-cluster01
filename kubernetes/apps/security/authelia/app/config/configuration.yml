@@ -60,7 +60,7 @@ identity_providers:
         scopes: ["openid", "profile", "groups", "email"]
         redirect_uris:
           ["https://grafana.${SECRET_DOMAIN}/login/generic_oauth"]
-        userinfo_signing_algorithm: none
+        userinfo_signed_response_alg: none
       - id: proxmox
         description: Proxmox
         secret: "${SECRET_PROXMOX_OAUTH_CLIENT_SECRET}"
@@ -73,7 +73,7 @@ identity_providers:
           - openid
           - profile
           - email
-        userinfo_signing_algorithm: none
+        userinfo_signed_response_alg: none
       - id: synology-dsm
         description: Synology DSM
         secret: "${SECRET_SYNOLOGY_OAUTH_CLIENT_SECRET}"
@@ -87,7 +87,7 @@ identity_providers:
           - profile
           - groups
           - email
-        userinfo_signing_algorithm: none
+        userinfo_signed_response_alg: none
       - id: pgadmin
         description: PgAdmin
         secret: "${SECRET_PGADMIN_OAUTH_CLIENT_SECRET}"
@@ -100,4 +100,4 @@ identity_providers:
           - openid
           - profile
           - email
-        userinfo_signing_algorithm: none
+        userinfo_signed_response_alg: none
