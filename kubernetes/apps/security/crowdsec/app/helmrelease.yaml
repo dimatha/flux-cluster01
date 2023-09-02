@@ -83,6 +83,9 @@ spec:
         - namespace: networking
           podName: nginx-*
           program: nginx
+        - namespace: selfhosted
+          podName: paperless-0-*
+          program: paperless
       env:
         - name: COLLECTIONS
           value: "crowdsecurity/nginx andreasbrett/paperless-ngx"
