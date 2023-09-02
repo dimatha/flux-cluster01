@@ -23,6 +23,12 @@ connectivity:
   checker:
     target: 172.16.172.1:53
     interval: 1m
+maintenance:
+  start: 23:00
+  duration: 1h
+  every:
+    - Monday
+    - Thursday
 # endpoints:
 #   - name: status
 #     group: external
