@@ -143,6 +143,7 @@ spec:
             etcd:
               enabled: true
     alertmanager:
+      enabled: true
       config:
         global:
           resolve_timeout: 5m
