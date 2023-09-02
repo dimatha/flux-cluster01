@@ -6,3 +6,5 @@ namespace: monitoring
 resources:
   - ./grafana-dashboard.yaml
   - ./helmrelease.yaml
+  - ./servicemonitor.yaml
+  - ./prometheusrule.yaml
