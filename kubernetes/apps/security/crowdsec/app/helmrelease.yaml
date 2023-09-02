@@ -85,7 +85,7 @@ spec:
           program: nginx
       env:
         - name: COLLECTIONS
-          value: "crowdsecurity/nginx"
+          value: "crowdsecurity/nginx andreasbrett/paperless-ngx"
         - name: DISABLE_ONLINE_API
           value: "true"
       metrics:
