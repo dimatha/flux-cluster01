@@ -21,3 +21,4 @@ resources:
   - ./weave-gitops.yaml
   - ./cloudnative-pg.yaml
   - ./crowdsec-charts.yaml
+  - ./falco-security-charts.yaml
