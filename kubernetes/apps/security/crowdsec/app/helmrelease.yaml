@@ -77,6 +77,8 @@ spec:
           value: "k8s"
         - name: ENROLL_TAGS
           value: "k8s linux nginx"
+        - name: DISABLE_ONLINE_API
+          value: "true"
     agent:
       acquisition:
         - namespace: networking
@@ -85,9 +87,9 @@ spec:
       env:
         - name: COLLECTIONS
           value: "crowdsecurity/nginx"
+        - name: DISABLE_ONLINE_API
+          value: "true"
       metrics:
         enabled: true
         serviceMonitor:
           enabled: true
-
-
