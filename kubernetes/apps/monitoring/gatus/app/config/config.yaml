@@ -3,7 +3,7 @@ web:
   port: ${CUSTOM_WEB_PORT}
 storage:
   type: sqlite
-  path: /data
+  path: /data/gatus.db
   caching: true
   #   path: postgres://${INIT_POSTGRES_USER}:${INIT_POSTGRES_PASS}@${INIT_POSTGRES_HOST}:5432/${INIT_POSTGRES_DBNAME}?sslmode=require
 metrics: true
