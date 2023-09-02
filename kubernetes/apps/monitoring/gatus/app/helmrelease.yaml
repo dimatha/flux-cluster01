@@ -55,7 +55,9 @@ spec:
       TZ: Europe/Berlin
       GATUS_CONFIG_PATH: /config
       CUSTOM_WEB_PORT: &port 80
-    envFrom: *envFrom
+    envFrom:
+      - secretRef:
+          name: gatus-secret
     service:
       main:
         ports:
