@@ -51,7 +51,6 @@ spec:
                     values:
                      - amd64
       dashboard:
-        # TODO: No arm64 images, raise a GH issue
         enabled: true
       metrics:
         enabled: true
@@ -93,3 +92,9 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: true
+      resources:
+        limits:
+          memory: 100Mi
+        requests:
+          cpu: 150m
+          memory: 100Mi
