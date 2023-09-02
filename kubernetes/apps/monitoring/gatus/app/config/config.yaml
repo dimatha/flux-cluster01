@@ -35,7 +35,8 @@ endpoints:
     group: external
     url: "http://1.1.1.1:80"
     interval: 10s
-    dns-resolver: tcp://172.16.172.1:53
+    client:
+      dns-resolver: tcp://172.16.172.1:53
     conditions:
       - "[STATUS] == 301"
     alerts:
