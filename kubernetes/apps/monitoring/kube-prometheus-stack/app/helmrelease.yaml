@@ -209,7 +209,7 @@ spec:
         pathType: Prefix
         ingressClassName: nginx
         hosts:
-          - &host "alert-manager.${SECRET_PUBLIC_DOMAIN}"
+          - &host "alertmanager.${SECRET_DOMAIN}"
         tls:
           - hosts:
               - *host
