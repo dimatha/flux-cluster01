@@ -7,7 +7,7 @@ storage:
   caching: true
   #   path: postgres://${INIT_POSTGRES_USER}:${INIT_POSTGRES_PASS}@${INIT_POSTGRES_HOST}:5432/${INIT_POSTGRES_DBNAME}?sslmode=require
 metrics: true
-debug: true
+debug: false
 ui:
   title: Status | Gatus
   header: Status
@@ -32,8 +32,10 @@ maintenance:
     - Thursday
 endpoints:
   - name: Ping CloudFlare
-    url: "http://1.1.1.1"
+    group: external
+    url: "http://1.1.1.1:80"
     interval: 10s
+    dns-resolver: tcp://172.16.172.1:53
     conditions:
       - "[STATUS] == 301"
     alerts:
