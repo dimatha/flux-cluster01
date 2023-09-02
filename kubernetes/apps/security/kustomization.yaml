@@ -6,3 +6,4 @@ resources:
   - ./namespace.yaml
   # Flux-Kustomizations
   - ./authelia/ks.yaml
+  - ./crowdsec/ks.yaml
