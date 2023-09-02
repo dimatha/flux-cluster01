@@ -128,14 +128,14 @@ spec:
         scrapeConfigSelectorNilUsesHelmValues: false
         enableAdminAPI: true
         walCompression: true
-        retentionSize: 8GB
+        retentionSize: 40GB
         storageSpec:
           volumeClaimTemplate:
             spec:
               storageClassName: csi-rbd-sc
               resources:
                 requests:
-                  storage: 10Gi
+                  storage: 50Gi
     grafana:
       enabled: false
       forceDeployDashboards: true
