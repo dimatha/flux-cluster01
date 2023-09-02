@@ -95,7 +95,7 @@ spec:
     persistence:
       config:
         enabled: true
-        type: emptyDir
+        # type: emptyDir
       config-file:
         enabled: true
         type: configMap
