@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: data-gatus
+  namespace: monitoring
+  labels:
+    app.kubernetes.io/name: &name gatus
+    app.kubernetes.io/instance: *name
+    snapshot.home.arpa/enabled: 'true'
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi

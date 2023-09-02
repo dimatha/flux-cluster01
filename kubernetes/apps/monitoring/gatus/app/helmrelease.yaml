@@ -97,7 +97,8 @@ spec:
     persistence:
       config:
         enabled: true
-        # type: emptyDir
+        existingClaim: data-gatus
+        mountPath: "/data"
       config-file:
         enabled: true
         type: configMap
@@ -124,9 +125,3 @@ spec:
           - { name: METHOD, value: WATCH }
         volumeMounts:
           - { name: config, mountPath: /config }
-    volumeClaimTemplates:
-      - name: data
-        mountPath: /data
-        accessMode: ReadWriteOnce
-        size: 5Gi
-        storageClass: csi-rbd-sc
