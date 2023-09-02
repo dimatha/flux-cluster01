@@ -30,14 +30,14 @@ maintenance:
   every:
     - Monday
     - Thursday
-endpoints:
-  - name: status
-    group: external
-    url: https://status.${SECRET_DOMAIN}
-    interval: 1m
-    client:
-      dns-resolver: tcp://172.16.172.1:53
-    conditions:
-      - "[STATUS] == 200"
-    alerts:
-      - type: pushover
+# endpoints:
+#   - name: status
+#     group: external
+#     url: https://status.${SECRET_DOMAIN}
+#     interval: 1m
+#     client:
+#       dns-resolver: tcp://172.16.172.1:53
+#     conditions:
+#       - "[STATUS] == 200"
+#     alerts:
+#       - type: pushover
