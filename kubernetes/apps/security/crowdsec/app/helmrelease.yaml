@@ -84,7 +84,7 @@ spec:
           podName: nginx-*
           program: nginx
         - namespace: selfhosted
-          podName: paperless-0-*
+          podName: paperless-0*
           program: paperless
       env:
         - name: COLLECTIONS
