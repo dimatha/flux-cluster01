@@ -62,13 +62,13 @@ spec:
           enabled: false
           accessModes:
             - ReadWriteOnce
-          # storageClassName: "cstor-replica-raspberry-pi-pool"
+          storageClassName: "csi-rbd-sc"
           size: 1Gi
         config:
           enabled: true
           accessModes:
             - ReadWriteOnce
-          # storageClassName: "cstor-replica-raspberry-pi-pool"
+          storageClassName: "csi-rbd-sc"
           size: 100Mi
       env:
         - name: ENROLL_KEY
@@ -76,7 +76,7 @@ spec:
         - name: ENROLL_INSTANCE_NAME
           value: "k8s"
         - name: ENROLL_TAGS
-          value: "k8s linux test"
+          value: "k8s linux nginx"
     agent:
       acquisition:
         - namespace: networking
