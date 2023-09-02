@@ -89,8 +89,8 @@ spec:
       env:
         - name: COLLECTIONS
           value: "crowdsecurity/nginx andreasbrett/paperless-ngx"
-        - name: DISABLE_ONLINE_API
-          value: "true"
+        # - name: DISABLE_ONLINE_API
+        #   value: "true"
       metrics:
         enabled: true
         serviceMonitor:
