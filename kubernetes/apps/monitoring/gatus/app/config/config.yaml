@@ -21,7 +21,7 @@ alerting:
       success-threshold: 2
 connectivity:
   checker:
-    target: 172.16.172.1:53
+    target: 1.1.1.1:80
     interval: 1m
 maintenance:
   start: 23:00
