@@ -33,21 +33,21 @@ maintenance:
 endpoints:
   - name: Ping CloudFlare
     group: external
-    url: "http://1.1.1.1:80"
+    url: "icmp://1.1.1.1"
     interval: 10s
     client:
       dns-resolver: tcp://172.16.172.1:53
     conditions:
-      - "[STATUS] == 301"
+      - "[CONNECTED] == true"
     alerts:
       - type: pushover
-#   - name: status
-#     group: external
-#     url: https://status.${SECRET_DOMAIN}
-#     interval: 1m
-#     client:
-#       dns-resolver: tcp://172.16.172.1:53
-#     conditions:
-#       - "[STATUS] == 200"
-#     alerts:
-#       - type: pushover
+  # - name: Ping CloudFlare
+  #   group: external
+  #   url: "http://1.1.1.1:80"
+  #   interval: 10s
+  #   client:
+  #     dns-resolver: tcp://172.16.172.1:53
+  #   conditions:
+  #     - "[STATUS] == 301"
+  #   alerts:
+  #     - type: pushover
