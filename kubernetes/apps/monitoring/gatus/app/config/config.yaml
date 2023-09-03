@@ -52,3 +52,13 @@ endpoints:
       - "[STATUS] == 301"
     alerts:
       - type: pushover
+  - name: pve-node01
+    group: internal
+    url: "icmp://192.168.192.201"
+    interval: 10s
+    client:
+      dns-resolver: tcp://172.16.172.1:53
+    conditions:
+      - "[CONNECTED] == true"
+    alerts:
+      - type: pushover
