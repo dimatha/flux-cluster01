@@ -8,6 +8,7 @@ spec:
   interval: 30m
   chart:
     spec:
+      # renovate: registryUrl=https://kubernetes-sigs.github.io/external-dns
       chart: external-dns
       version: 1.13.0
       sourceRef:
