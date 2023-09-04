@@ -86,7 +86,7 @@ spec:
         - namespace: selfhosted
           podName: paperless-0*
           program: paperless
-        - namespace: selfhosted
+        - namespace: security
           podName: authelia-*
           program: authelia
       env:
