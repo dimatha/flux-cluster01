@@ -91,7 +91,7 @@ spec:
           program: authelia
       env:
         - name: COLLECTIONS
-          value: "crowdsecurity/nginx andreasbrett/paperless-ngx"
+          value: "crowdsecurity/nginx andreasbrett/paperless-ngx LePresidente/authelia"
         # - name: DISABLE_ONLINE_API
         #   value: "true"
       metrics:
