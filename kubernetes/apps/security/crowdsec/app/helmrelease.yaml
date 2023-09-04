@@ -86,6 +86,9 @@ spec:
         - namespace: selfhosted
           podName: paperless-0*
           program: paperless
+        - namespace: selfhosted
+          podName: authelia-*
+          program: authelia
       env:
         - name: COLLECTIONS
           value: "crowdsecurity/nginx andreasbrett/paperless-ngx"
