@@ -68,7 +68,7 @@ spec:
         annotations:
           ingress.home.arpa/type: "internal"
           hajimari.io/icon: mdi:code-json
-        host: &host 'coder.${EXTERNAL_DOMAIN}'
+        host: &host 'coder.${SECRET_DOMAIN}'
         # tls:
         #   - hosts:
         #       - *host
