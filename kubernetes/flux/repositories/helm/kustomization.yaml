@@ -22,3 +22,4 @@ resources:
   - ./cloudnative-pg.yaml
   - ./crowdsec-charts.yaml
   - ./falco-security-charts.yaml
+  - ./coder-v2.yaml

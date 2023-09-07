@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: host-sysctl
+  namespace: kube-system
+spec:
+  selector:
+    matchLabels:
+      app: host-sysctl
+  template:
+    metadata:
+      labels:
+        app: host-sysctl
+    spec:
+      hostNetwork: true
+      initContainers:
+        - name: init
+          image: alpine
+          command:
+            - /bin/sh
+            - -c
+            - sysctl net.ipv4.ping_group_range="0 2147483647"
+          securityContext:
+            privileged: true
+      containers:
+        - name: sleep
+          image: filefrog/k8s-hacks:pause
