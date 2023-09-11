@@ -85,7 +85,7 @@ spec:
           program: nginx
         - namespace: selfhosted
           podName: paperless-0*
-          program: paperless
+          program: Paperless-ngx
         - namespace: security
           podName: authelia-*
           program: authelia
