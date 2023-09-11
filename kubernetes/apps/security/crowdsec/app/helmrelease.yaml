@@ -110,19 +110,19 @@ spec:
         enabled: true
         serviceMonitor:
           enabled: true
-      persistentVolume:
-        data:
-          enabled: false
-          accessModes:
-            - ReadWriteOnce
-          storageClassName: "csi-rbd-sc"
-          size: 1Gi
-        config:
-          enabled: false
-          accessModes:
-            - ReadWriteOnce
-          storageClassName: "csi-rbd-sc"
-          size: 100Mi
+      # persistentVolume:
+      #   data:
+      #     enabled: false
+      #     accessModes:
+      #       - ReadWriteOnce
+      #     storageClassName: "csi-rbd-sc"
+      #     size: 1Gi
+      #   config:
+      #     enabled: false
+      #     accessModes:
+      #       - ReadWriteOnce
+      #     storageClassName: "csi-rbd-sc"
+      #     size: 100Mi
       env:
         - name: ENROLL_KEY
           value: "${SECRET_CROWDSEC_ENROLL_KEY}"
@@ -146,8 +146,6 @@ spec:
       env:
         - name: COLLECTIONS
           value: "crowdsecurity/nginx andreasbrett/paperless-ngx LePresidente/authelia"
-        # - name: DISABLE_ONLINE_API
-        #   value: "true"
       metrics:
         enabled: true
         serviceMonitor:
