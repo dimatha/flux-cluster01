@@ -40,6 +40,61 @@ spec:
   maxHistory: 3
   values:
     container_runtime: containerd
+    notifications:
+      #########################################################################
+      # Title:            CrowdSec : Pushover Notification (API)              #
+      # Author(s):        JigSawFr                                            #
+      # URL:              https://github.com/crowdsecurity/crowdsec           #
+      #########################################################################
+      #                             MIT License                               #
+      #########################################################################
+
+      type: http          # Don't change
+      name: http_default  # Must match the registered plugin in the profile
+
+      # One of "trace", "debug", "info", "warn", "error", "off"
+      log_level: info
+
+      # group_wait:         # Time to wait collecting alerts before relaying a message to this plugin, eg "30s"
+      # group_threshold:    # Amount of alerts that triggers a message before <group_wait> has expired, eg "10"
+      # max_retry:          # Number of attempts to relay messages to plugins in case of error
+      # timeout:            # Time to wait for response from the plugin before considering the attempt a failure, eg "10s"
+
+      #-------------------------
+      # plugin-specific options
+
+      # The following template receives a list of models.Alert objects
+      # The output goes in the http request body
+      format: |
+        {
+        "token": "${SECRET_ALERTMANAGER_PUSHOVER_TOKEN}",
+        "user": "${SECRET_ALERTMANAGER_PUSHOVER_USER_KEY}",
+        "message": "{{range . -}}{{$alert := . -}}{{range .Decisions -}}<b>{{.Value}}</b> will get <b>{{.Type}}</b> for next <b>{{.Duration}}</b> for triggering <b>{{.Scenario}}</b>.\r\n https://www.shodan.io/host/{{.Value}}{{end -}}{{end -}}",
+        "html": "1",
+        "title": "Scenario triggered on IDS/IPS !"
+        }
+      url: https://api.pushover.net/1/messages.json
+
+      method: POST
+      headers:
+            Content-Type: "application/json"
+    tls:
+      enabled: true
+      caBundle: true
+      insecureSkipVerify: false
+      certManager:
+        enabled: true
+      bouncer:
+        secret: "{{ .Release.Name }}-bouncer-tls"
+        reflector:
+          namespaces: []
+      agent:
+        tlsClientAuth: true
+        secret: "{{ .Release.Name }}-agent-tls"
+        reflector:
+          namespaces: []
+      lapi:
+        secret: "{{ .Release.Name }}-lapi-tls"
     lapi:
       affinity:
         nodeAffinity:
@@ -51,7 +106,7 @@ spec:
                     values:
                      - amd64
       dashboard:
-        enabled: true
+        enabled: false
       metrics:
         enabled: true
         serviceMonitor:
