@@ -75,9 +75,9 @@ spec:
         - name: ENROLL_INSTANCE_NAME
           value: "k8s"
         - name: ENROLL_TAGS
-          value: "k8s linux nginx"
+          value: "k8s linux nginx authelia paperless"
         - name: DISABLE_ONLINE_API
-          value: "true"
+          value: "false"
     agent:
       acquisition:
         - namespace: networking
