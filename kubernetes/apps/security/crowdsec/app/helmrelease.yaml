@@ -42,8 +42,8 @@ spec:
     container_runtime: containerd
     config:
       notifications:
-        type: http          # Don't change
-        name: http_default  # Must match the registered plugin in the profile
+        type: http # Don't change
+        name: http_default # Must match the registered plugin in the profile
 
         # One of "trace", "debug", "info", "warn", "error", "off"
         log_level: info
@@ -67,10 +67,9 @@ spec:
           "title": "Scenario triggered on IDS/IPS !"
           }
         url: https://api.pushover.net/1/messages.json
-
         method: POST
         headers:
-              Content-Type: "application/json"
+          Content-Type: "application/json"
     tls:
       enabled: true
       caBundle: true
@@ -97,7 +96,7 @@ spec:
                   - key: beta.kubernetes.io/arch
                     operator: In
                     values:
-                     - amd64
+                      - amd64
       resources:
         limits:
           memory: 1Gi
