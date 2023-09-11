@@ -105,8 +105,8 @@ spec:
                     operator: In
                     values:
                      - amd64
-      dashboard:
-        enabled: false
+      # dashboard:
+      #   enabled: false
       metrics:
         enabled: true
         serviceMonitor:
