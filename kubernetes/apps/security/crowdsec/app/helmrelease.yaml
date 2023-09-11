@@ -40,7 +40,8 @@ spec:
   maxHistory: 3
   values:
     container_runtime: containerd
-    notifications:
+    config:
+      notifications:
       #########################################################################
       # Title:            CrowdSec : Pushover Notification (API)              #
       # Author(s):        JigSawFr                                            #
