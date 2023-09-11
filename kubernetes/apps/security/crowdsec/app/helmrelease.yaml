@@ -118,7 +118,7 @@ spec:
           storageClassName: "csi-rbd-sc"
           size: 1Gi
         config:
-          enabled: true
+          enabled: false
           accessModes:
             - ReadWriteOnce
           storageClassName: "csi-rbd-sc"
