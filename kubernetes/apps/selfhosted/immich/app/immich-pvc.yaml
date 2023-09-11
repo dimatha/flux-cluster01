@@ -21,7 +21,7 @@ spec:
     server: skinny.int.sakun.in
     path: /volume1/docs/immich
   mountOptions:
-    - nfsvers=4.2
+    - nfsvers=4.1
     - nconnect=8
     - hard
     - noatime
