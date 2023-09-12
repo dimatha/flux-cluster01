@@ -38,6 +38,10 @@ access_control:
         - "172.16.0.0/12"
         - "192.168.0.0/16"
   rules:
+    # bypass Authelia WAN + LAN
+    - domain:
+        - auth.${SECRET_DOMAIN}
+      policy: bypass
     - domain:
         - "*.${SECRET_DOMAIN}"
       policy: one_factor
