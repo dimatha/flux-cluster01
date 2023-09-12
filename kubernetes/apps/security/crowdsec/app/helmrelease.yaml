@@ -44,15 +44,16 @@ spec:
       - http_default
     config:
       profiles:
-        profiles.yaml: |
+        profiles.yaml.local: |
           name: default_ip_remediation
           debug: true
           filters:
             - Alert.Remediation == true && Alert.GetScope() == "Ip"
           notifications:
             - http_default
+          on_success: break
       notifications:
-        http.yaml: |
+        http.yaml.local: |
           type: http
           name: http_default
           log_level: debug
