@@ -24,7 +24,7 @@ spec:
       retries: 3
   upgrade:
     remediation:
-      remediateLastFailure: false
+      remediateLastFailure: true
       retries: 3
       strategy: rollback
     cleanupOnFail: true
@@ -32,7 +32,7 @@ spec:
   # test:
   #   enable: true
   rollback:
-    recreate: false
+    recreate: true
     force: true
     cleanupOnFail: true
   uninstall:
@@ -50,12 +50,12 @@ spec:
           filters:
             - Alert.Remediation == true && Alert.GetScope() == "Ip"
           notifications:
-            - http_default
+            - pushover_default
           on_success: break
       notifications:
-        http.yaml.local: |
+        pushover.yaml: |
           type: http
-          name: http_default
+          name: pushover_default
           log_level: debug
           format: |
             {
