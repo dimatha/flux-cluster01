@@ -117,16 +117,18 @@ spec:
       #     storageClassName: "csi-rbd-sc"
       #     size: 100Mi
       env:
-        - name: ENROLL_KEY
-          value: "${SECRET_CROWDSEC_ENROLL_KEY}"
-        - name: ENROLL_INSTANCE_NAME
-          value: "k8s"
-        - name: ENROLL_TAGS
-          value: "k8s linux nginx authelia paperless"
+        # - name: ENROLL_KEY
+        #   value: "${SECRET_CROWDSEC_ENROLL_KEY}"
+        # - name: ENROLL_INSTANCE_NAME
+        #   value: "k8s"
+        # - name: ENROLL_TAGS
+        #   value: "k8s linux nginx authelia paperless"
         - name: DISABLE_ONLINE_API
           value: "false"
         - name: LEVEL_DEBUG
           value: "true"
+        - name: TZ
+          value: "Europe/Berlin"
     agent:
       acquisition:
         - namespace: networking
@@ -141,6 +143,8 @@ spec:
       env:
         - name: COLLECTIONS
           value: "crowdsecurity/nginx andreasbrett/paperless-ngx LePresidente/authelia"
+        - name: LEVEL_DEBUG
+          value: "true"
       metrics:
         enabled: true
         serviceMonitor:
