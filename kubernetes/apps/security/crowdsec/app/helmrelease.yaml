@@ -24,7 +24,7 @@ spec:
       retries: 3
   upgrade:
     remediation:
-      remediateLastFailure: true
+      remediateLastFailure: false
       retries: 3
       strategy: rollback
     cleanupOnFail: true
@@ -32,7 +32,7 @@ spec:
   # test:
   #   enable: true
   rollback:
-    recreate: true
+    recreate: false
     force: true
     cleanupOnFail: true
   uninstall:
