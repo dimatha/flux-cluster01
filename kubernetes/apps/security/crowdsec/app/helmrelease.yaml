@@ -58,18 +58,7 @@ spec:
           name: pushover_default
           log_level: debug
           format: |
-            {{ range . -}}
-            {{ $alert := . -}}
-            {
-            "token": "${SECRET_ALERTMANAGER_PUSHOVER_TOKEN}",
-            "user": "${SECRET_ALERTMANAGER_PUSHOVER_USER_KEY}",
-            {{range .Decisions -}}
-            "title": "{{.Type }} {{ .Value }} for {{.Duration}}",
-            "message": "{{.Scenario}}  \n\n[crowdsec cti](https://app.crowdsec.net/cti/{{.Value -}})  \n\n[shodan](https://shodan.io/host/{{.Value -}})"
-            {{end -}}
-            }
-            {{ end -}}
-            }
+            {{.|toJson}}
           url: https://api.pushover.net/1/messages.json
           method: POST
           headers:
