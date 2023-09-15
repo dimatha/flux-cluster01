@@ -130,8 +130,8 @@ spec:
         #   value: "k8s linux nginx authelia paperless"
         - name: DISABLE_ONLINE_API
           value: "false"
-        - name: LEVEL_DEBUG
-          value: "true"
+        # - name: LEVEL_DEBUG
+        #   value: "true"
         - name: TZ
           value: "Europe/Berlin"
     agent:
@@ -148,8 +148,8 @@ spec:
       env:
         - name: COLLECTIONS
           value: "crowdsecurity/nginx andreasbrett/paperless-ngx LePresidente/authelia"
-        - name: LEVEL_DEBUG
-          value: "true"
+        # - name: LEVEL_DEBUG
+        #   value: "true"
       metrics:
         enabled: true
         serviceMonitor:
