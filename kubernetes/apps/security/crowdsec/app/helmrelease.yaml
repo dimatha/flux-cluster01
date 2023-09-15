@@ -58,11 +58,17 @@ spec:
           name: pushover_default
           log_level: debug
           format: |
+            {{ range . -}}
+            {{ $alert := . -}}
             {
             "token": "${SECRET_ALERTMANAGER_PUSHOVER_TOKEN}",
             "user": "${SECRET_ALERTMANAGER_PUSHOVER_USER_KEY}",
-            "message": "{{range . -}}{{$alert := . -}}{{range .Decisions -}}<b>{{.Value}}</b> will get <b>{{.Type}}</b> for next <b>{{.Duration}}</b> for triggering <b>{{.Scenario}}</b>{{.Message}}{{end -}}{{end -}}",
-            "title": "Scenario triggered on IDS/IPS !"
+            {{range .Decisions -}}
+            "title": "{{.Type }} {{ .Value }} for {{.Duration}}",
+            "message": "{{.Scenario}}  \n\n[crowdsec cti](https://app.crowdsec.net/cti/{{.Value -}})  \n\n[shodan](https://shodan.io/host/{{.Value -}})"
+            {{end -}}
+            }
+            {{ end -}}
             }
           url: https://api.pushover.net/1/messages.json
           method: POST
