@@ -58,7 +58,13 @@ spec:
           name: pushover_default
           log_level: debug
           format: |
-            {{.|toJson}}
+            {
+            "token": "${SECRET_ALERTMANAGER_PUSHOVER_TOKEN}",
+            "user": "${SECRET_ALERTMANAGER_PUSHOVER_USER_KEY}",
+            "message": "{{range . -}}{{$alert := . -}}{{range .Decisions -}}<b>{{.Value}}</b> will get <b>{{.Type}}</b> for next <b>{{.Duration}}</b> for triggering <b>{{.Scenario}}</b>.\r\n https://www.shodan.io/host/{{.Value}}{{end -}}{{end -}}",
+            "html": "1",
+            "title": "Scenario triggered on IDS/IPS !"
+            }
           url: https://api.pushover.net/1/messages.json
           method: POST
           headers:
