@@ -43,15 +43,15 @@ spec:
     notifications:
       - pushover_default
     config:
-      # profiles:
-      #   profiles.yaml.local: |
-      #     name: default_ip_remediation
-      #     debug: true
-      #     filters:
-      #       - Alert.Remediation == true && Alert.GetScope() == "Ip"
-      #     notifications:
-      #       - pushover_default
-      #     on_success: break
+      profiles:
+        profiles.yaml.local: |
+          name: default_ip_remediation
+          debug: true
+          filters:
+            - Alert.Remediation == true && Alert.GetScope() == "Ip"
+          notifications:
+            - pushover_default
+          on_success: break
       notifications:
         pushover.yaml: |
           type: http
